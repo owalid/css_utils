@@ -69,29 +69,6 @@ body {
 html {
     background-image: linear-gradient(to right, $home_color1 , $home_color2);
 }
-
-@keyframes spin {
-    to{transform:rotateZ(720deg)}
-}
-#arrow_icon {
-    position: relative;
-    color: $primary-black-c;
-    transform-origin: 50% 50%;
-    font-size: 2em;
-}
-@media screen and (max-device-width:480px) {
-    #arrow_icon {
-        position: relative;
-        color: $primary-black-c;
-        transform-origin: 50% 50%;
-        font-size: 1.33em;
-    }
-}
-
-#arrow_wrap:hover > div{
-    animation: spin 2000ms;
-}
-
 /*************************************************************************
 *                                                                       *
 *                          Transitions                                  *
@@ -162,81 +139,5 @@ html {
         opacity: 0;
         transform: translate3d(600px, 0, 0);
     }
-}
-
-// n is number of stars required
-@function multiple-box-shadow ($n) {
-
-    $value: '#{random(2000)}px #{random(2000)}px #FFF';
-    @for $i from 2 through $n {
-        $value: '#{$value} , #{random(2000)}px #{random(2000)}px #FFF'
-    }
-    @return unquote($value)
-}
-
-$shadows-small:  multiple-box-shadow(150);
-$shadows-medium: multiple-box-shadow(100);
-$shadows-big:    multiple-box-shadow(50);
-    
-#stars {
-    width: 1px;
-    height: 1px;
-    background: transparent;
-    box-shadow: $shadows-small;
-    animation: animStar 50s linear infinite;
-    
-    &:after {
-        content: " ";
-        position: absolute;
-        top: 2000px;
-        width: 1px;
-        height: 1px;
-        background: transparent;
-        box-shadow: $shadows-small;
-    }
-}
-    
-#stars2 {
-    width: 2px;
-    height: 2px;
-    background: transparent;
-    box-shadow: $shadows-medium;
-    animation: animStar 100s linear infinite;
-    
-    &:after {
-        content: " ";
-        position: absolute;
-        top: 2000px;
-        width: 2px;
-        height: 2px;
-        background: transparent;
-        box-shadow: $shadows-medium;
-    }
-}
-#stars3 {
-    width: 3px;
-    height: 3px;
-    background: transparent;
-    box-shadow: $shadows-big;
-    animation: animStar 150s linear infinite;
-    
-    &:after {
-        content: " ";
-        position: absolute;
-        top: 2000px;
-        width: 3px;
-        height: 3px;
-        background: transparent;
-        box-shadow: $shadows-big;
-    }
-}
-    
-@keyframes animStar {
-    from {
-        transform: translateY(0px)
-    }
-    to {
-        transform: translateY(-2000px)
-    }		
 }
     
