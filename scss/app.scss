@@ -1,0 +1,24 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Cormorant+Garamond|Eczar');
+@import url('https://fonts.googleapis.com/css?family=Srisakdi');
+
+
+@import "./style.scss";
+
+// Bulma
+//@import "~bulma/sass/utilities/initial-variables";
+//@import "~bulma/sass/utilities/functions";
+
+$red: rgba(253, 116, 108, 1);
+
+$primary: $red;
+
+
+// Add new color variables to the color map.
+//@import "~bulma/sass/utilities/derived-variables";
+
+// Add bulma extensions
+// @import "~bulma-extensions/src/sass/index";
+// @import "~bulma-extensions/bulma-timeline/dist/css/bulma-timeline.sass";
+
+@import '~bulma/bulma';

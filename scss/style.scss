@@ -1,0 +1,242 @@
+/*************************************************************************
+*                                                                       *
+*                          Utilities SASS                               *
+*                                                                       *
+**************************************************************************/
+
+@import url('https://fonts.googleapis.com/css?family=Inconsolata');
+$red: rgba(253, 116, 108, 1);
+$primary-black-c: rgba(253, 116, 108, 0.7);
+$secondary-c: rgba(106, 255, 240, 0.347);
+
+$primary: $red;
+
+$home_color1: #141E30;
+$home_color2: #243B55;
+
+.is-prim {
+    color: $primary;
+}
+
+hr{
+    display: flex;
+    color: $primary!important;
+    background-color: $primary !important; 
+}
+
+canvas{
+    shape-outside: ellipse(100px 200px at 50% 50%);
+    width: auto;
+    height: auto;
+    background-color: transparent;
+    opacity: .6;
+}
+
+.top-canvas{
+    border-top: 10px solid $primary;
+    border-left: 10px solid black; 
+    border-bottom: 10px solid black;
+    border-right: 10px solid black;
+}
+.bottom-canvas{
+    border-top: 10px solid black;
+    border-left: 10px solid black; 
+    border-bottom: 10px solid $primary;
+    border-right: 10px solid black;
+}
+.left-canvas{
+    border-top: 10px solid black;
+    border-left: 10px solid $primary; 
+    border-bottom: 10px solid black;
+    border-right: 10px solid black;
+}
+.right-canvas{
+    border-top: 10px solid black;
+    border-left: 10px solid black; 
+    border-bottom: 10px solid black;
+    border-right: 10px solid $primary;
+}
+
+
+body {
+    font-family: 'Inconsolata', sans-serif !important;
+}
+
+.main_color {
+    background-image: linear-gradient(to right, $home_color1 , $home_color2);
+}
+
+html {
+    background-image: linear-gradient(to right, $home_color1 , $home_color2);
+}
+
+@keyframes spin {
+    to{transform:rotateZ(720deg)}
+}
+#arrow_icon {
+    position: relative;
+    color: $primary-black-c;
+    transform-origin: 50% 50%;
+    font-size: 2em;
+}
+@media screen and (max-device-width:480px) {
+    #arrow_icon {
+        position: relative;
+        color: $primary-black-c;
+        transform-origin: 50% 50%;
+        font-size: 1.33em;
+    }
+}
+
+#arrow_wrap:hover > div{
+    animation: spin 2000ms;
+}
+
+/*************************************************************************
+*                                                                       *
+*                          Transitions                                  *
+*                                                                       *
+**************************************************************************/
+
+/*TRANSITION LEFT*/
+.fade-left-enter-active {
+    -webkit-animation: fadeInLeft .5s;
+    animation: fadeInLeft .5s;
+}
+
+.fade-left-leave-active {
+    -webkit-animation: fadeOutDown .3s;
+    animation: fadeOutDown .3s;
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translate3d(-600px, 0, 0);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes fadeOutDown {
+    from {
+        opacity: 1;
+        transform: none;
+    }
+    to {
+        opacity: 0;
+        transform: translate3d(-600px, 0, 0);
+    }
+}
+
+/*TRANSITION RIGHT*/
+.fade-right-enter-active {
+    -webkit-animation: fadeInRight .7s;
+    animation: fadeInRight .7s;
+}
+
+.fade-right-leave-active {
+    -webkit-animation: fadeOutDown .3s;
+    animation: fadeOutDown .3s;
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translate3d(600px, 0, 0);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes fadeOutDown {
+    from {
+        opacity: 1;
+        transform: none;
+    }
+    to {
+        opacity: 0;
+        transform: translate3d(600px, 0, 0);
+    }
+}
+
+// n is number of stars required
+@function multiple-box-shadow ($n) {
+
+    $value: '#{random(2000)}px #{random(2000)}px #FFF';
+    @for $i from 2 through $n {
+        $value: '#{$value} , #{random(2000)}px #{random(2000)}px #FFF'
+    }
+    @return unquote($value)
+}
+
+$shadows-small:  multiple-box-shadow(150);
+$shadows-medium: multiple-box-shadow(100);
+$shadows-big:    multiple-box-shadow(50);
+    
+#stars {
+    width: 1px;
+    height: 1px;
+    background: transparent;
+    box-shadow: $shadows-small;
+    animation: animStar 50s linear infinite;
+    
+    &:after {
+        content: " ";
+        position: absolute;
+        top: 2000px;
+        width: 1px;
+        height: 1px;
+        background: transparent;
+        box-shadow: $shadows-small;
+    }
+}
+    
+#stars2 {
+    width: 2px;
+    height: 2px;
+    background: transparent;
+    box-shadow: $shadows-medium;
+    animation: animStar 100s linear infinite;
+    
+    &:after {
+        content: " ";
+        position: absolute;
+        top: 2000px;
+        width: 2px;
+        height: 2px;
+        background: transparent;
+        box-shadow: $shadows-medium;
+    }
+}
+#stars3 {
+    width: 3px;
+    height: 3px;
+    background: transparent;
+    box-shadow: $shadows-big;
+    animation: animStar 150s linear infinite;
+    
+    &:after {
+        content: " ";
+        position: absolute;
+        top: 2000px;
+        width: 3px;
+        height: 3px;
+        background: transparent;
+        box-shadow: $shadows-big;
+    }
+}
+    
+@keyframes animStar {
+    from {
+        transform: translateY(0px)
+    }
+    to {
+        transform: translateY(-2000px)
+    }		
+}
+    
